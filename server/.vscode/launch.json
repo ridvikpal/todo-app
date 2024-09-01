@@ -1,16 +1,16 @@
 {
     "configurations": [
         {
-            "command": "npm start",
             "name": "Debug - npm start",
+            "command": "npm start",
             "request": "launch",
             "type": "node-terminal",
             "preLaunchTask": "tsc: build - tsconfig.json"
         },
         {
+            "name": "Debug - nodemon",
             "console": "internalConsole",
             "internalConsoleOptions": "neverOpen",
-            "name": "Debug - nodemon",
             "program": "${workspaceFolder}/dist/index.js",
             "request": "launch",
             "restart": true,
