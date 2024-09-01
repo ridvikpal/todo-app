@@ -7,8 +7,6 @@
         "latex",
         "plaintext",
         "javascript",
-        "csharp",
-        "jsonc",
-        "json"
+        "csharp"
     ]
 }
