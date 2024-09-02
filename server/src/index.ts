@@ -10,13 +10,13 @@ app.use(express.json());
 
 // create a todo
 
-app.post("/todos", async (request, result) => {
+app.post("/2do/post", async (request, result) => {
     try {
-        console.log(request.body);
-        // const newTodo = await pool.query(`INSERT INTO todo (description) VALUES( ${description} )`);
+        const { description } = request.body;
+        const postQuery = `INSERT INTO todo (description) VALUES('${description}') RETURNING *`
+        const newTodo = await pool.query(postQuery);
 
-        // console.log(newTodo);
-        // console.log(result);
+        result.json(newTodo.rows[0]);
     } catch (error) {
         if (error instanceof Error) {
             console.log(error.message);
@@ -25,6 +25,19 @@ app.post("/todos", async (request, result) => {
 });
 
 // get all todos
+
+app.get("/2do/get", async (request, result) => {
+    try {
+        const getQuery =  `SELECT * FROM todo`;
+        const allTodos = await pool.query(getQuery);
+
+        result.json(allTodos.rows);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        }
+    }
+})
 
 // get a todo
 
