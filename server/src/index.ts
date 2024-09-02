@@ -16,10 +16,10 @@ app.post("/2do/post", async (request, result) => {
         const postQuery = `INSERT INTO todo (description) VALUES('${description}') RETURNING *`
         const newTodo = await pool.query(postQuery);
 
-        result.json(newTodo.rows[0]);
+        result.json(newTodo.rows);
     } catch (error) {
         if (error instanceof Error) {
-            console.log(error.message);
+            result.send(error.message);
         }
     }
 });
@@ -34,14 +34,40 @@ app.get("/2do/get", async (request, result) => {
         result.json(allTodos.rows);
     } catch (error) {
         if (error instanceof Error) {
-            console.log(error.message);
+            result.send(error.message);
         }
     }
 })
 
 // get a todo
 
+app.get("/2do/get/:id", async (request, result) => {
+    try {
+        const getQuery =  `SELECT * FROM todo WHERE todo_id = ${request.params.id}`;
+        const specificTodo = await pool.query(getQuery);
+
+        result.json(specificTodo.rows);
+    } catch (error) {
+        if (error instanceof Error) {
+            result.send(error.message);
+        }
+    }
+});
+
 // update a todo
+app.put("/2do/put/:id", async (request, result) => {
+    try {
+        const { description } = request.body;
+        const putQuery = `UPDATE todo SET description = '${description}' WHERE todo_id = ${request.params.id} RETURNING *`;
+        const updatedTodo = await pool.query(putQuery);
+
+        result.json(updatedTodo.rows);
+    } catch (error) {
+        if (error instanceof Error) {
+            result.send(error.message);
+        }
+    }
+});
 
 // delete a todo
 
