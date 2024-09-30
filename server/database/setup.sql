@@ -1,5 +1,5 @@
 SELECT 'CREATE DATABASE todo_app' 
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'todoapp')\gexec
+WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'todo_app')\gexec
 
 \c todo_app
 
