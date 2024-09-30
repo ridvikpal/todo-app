@@ -6,5 +6,10 @@
 		{
 			"path": "client"
 		}
-	]
+	],
+	"settings": {
+		"cSpell.words": [
+			"Todos"
+		]
+	}
 }

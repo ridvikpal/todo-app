@@ -1,15 +1,14 @@
 import { Request, Response } from "express";
-import pool from "../db";
+import { deleteTodo } from "../service/delete-todo.service";
 
 const deleteTodoController = async (
     request: Request,
     response: Response,
 ): Promise<void> => {
     try {
-        const deleteQuery = `DELETE FROM todo WHERE todo_id = ${request.params.id} RETURNING *`;
-        const deletedTodo = await pool.query(deleteQuery);
+        const deletedTodo = await deleteTodo(parseInt(request.params.id));
 
-        response.status(200).send(deletedTodo.rows);
+        response.status(200).send(deletedTodo);
     } catch (error) {
         if (error instanceof Error) {
             response.status(500).send(error.message);

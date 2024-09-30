@@ -1,16 +1,14 @@
 import { Request, Response } from "express";
-import pool from "../db";
+import { createTodo } from "../service/create-todo.service";
 
 const postTodoController = async (
     request: Request,
     response: Response,
 ): Promise<void> => {
     try {
-        const { description } = request.body;
-        const postQuery = `INSERT INTO todo (description) VALUES('${description}') RETURNING *`
-        const newTodo = await pool.query(postQuery);
+        const newTodo = await createTodo(request.body.description);
 
-        response.status(200).send(newTodo.rows);
+        response.status(200).send(newTodo);
     } catch (error) {
         if (error instanceof Error) {
             response.status(500).send(error.message);

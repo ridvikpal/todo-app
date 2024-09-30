@@ -1,15 +1,14 @@
 import { Request, Response } from "express";
-import pool from "../db";
+import { getAllTodos } from "../service/get-todo.service";
 
 const getAllTodosController = async (
     request: Request,
     response: Response,
-) => {
+): Promise<void> => {
     try {
-        const getQuery =  `SELECT * FROM todo`;
-        const allTodos = await pool.query(getQuery);
+        const allTodos = await getAllTodos();
         
-        response.status(200).send(allTodos.rows);
+        response.status(200).send(allTodos);
     }catch (error) {
         if (error instanceof Error) {
             response.status(500).send(error.message);
