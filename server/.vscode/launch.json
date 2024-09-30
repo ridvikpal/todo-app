@@ -5,9 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "console": "integratedTerminal",
+            "command": "npm start",
+            "name": "npm start + tsc build",
+            "request": "launch",
+            "type": "node-terminal",
+            "preLaunchTask": "tsc: build - tsconfig.json"
+        },
+        {
+            "console": "internalConsole",
             "internalConsoleOptions": "neverOpen",
-            "name": "nodemon",
+            "name": "nodemon + tsc watch",
             "program": "${workspaceFolder}/dist/index.js",
             "request": "launch",
             "restart": true,
@@ -15,8 +22,8 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "type": "node"
-        }
-        
+            "type": "node",
+            "preLaunchTask": "tsc: watch - tsconfig.json"
+        }  
     ]
 }
