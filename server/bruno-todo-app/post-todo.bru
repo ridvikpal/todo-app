@@ -1,0 +1,17 @@
+meta {
+  name: post-todo
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:5000/2do/post
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "description": "testing 1, 2, 3"
+  }
+}

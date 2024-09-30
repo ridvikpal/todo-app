@@ -1,0 +1,17 @@
+meta {
+  name: put-todo
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:5000/2do/put/2
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "description": "on to the next one"
+  }
+}
