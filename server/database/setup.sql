@@ -1,7 +1,7 @@
 -- The schema for the database
-CREATE DATABASE todoapp;
+CREATE DATABASE IF NOT EXISTS todoapp;
 
-CREATE TABLE todo(
+CREATE TABLE IF NOT EXISTS todo(
     todo_id SERIAL PRIMARY KEY,
     description VARCHAR(255)
 );
