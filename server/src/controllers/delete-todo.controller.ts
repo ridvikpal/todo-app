@@ -9,10 +9,10 @@ const deleteTodoController = async (
         const deleteQuery = `DELETE FROM todo WHERE todo_id = ${request.params.id}`;
         const deletedTodo = await pool.query(deleteQuery);
 
-        response.json(deletedTodo);
+        response.status(200).send(deletedTodo);
     } catch (error) {
         if (error instanceof Error) {
-            response.send(error.message);
+            response.status(500).send(error.message);
         }
     }
 }

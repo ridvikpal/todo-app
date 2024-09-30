@@ -10,10 +10,10 @@ const postTodoController = async (
         const postQuery = `INSERT INTO todo (description) VALUES('${description}') RETURNING *`
         const newTodo = await pool.query(postQuery);
 
-        response.json(newTodo.rows);
+        response.status(200).send(newTodo.rows);
     } catch (error) {
         if (error instanceof Error) {
-            response.send(error.message);
+            response.status(500).send(error.message);
         }
     }
 }

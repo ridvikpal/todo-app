@@ -10,10 +10,10 @@ const putTodoController = async (
         const putQuery = `UPDATE todo SET description = '${description}' WHERE todo_id = ${request.params.id} RETURNING *`;
         const updatedTodo = await pool.query(putQuery);
 
-        response.json(updatedTodo.rows);
+        response.status(200).send(updatedTodo.rows);
     } catch (error) {
         if (error instanceof Error) {
-            response.send(error.message);
+            response.status(500).send(error.message);
         }
     }
 }
