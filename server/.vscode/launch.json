@@ -15,7 +15,7 @@
             "console": "internalConsole",
             "internalConsoleOptions": "neverOpen",
             "name": "nodemon + tsc watch",
-            "program": "${workspaceFolder}/dist/index.js",
+            "program": "${workspaceFolder}/dist/main.js",
             "request": "launch",
             "restart": true,
             "runtimeExecutable": "nodemon",
