@@ -1,4 +1,4 @@
-import pool from "../db";
+import pool from "../database/pool";
 import { Todo } from "../types/todo.type";
 
 export const updateTodo = async (id: number, description: string): Promise<Todo | undefined> => {

@@ -1,6 +1,6 @@
 import { Pool } from 'pg';
 
-import auth from '../database/auth.json';
+import auth from './auth.json';
 
 const pool = new Pool({
     user: auth.username,
